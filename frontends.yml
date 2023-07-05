@@ -1,0 +1,4 @@
+frontends:
+- image: Kali_Linux
+  memoryMB: 2048
+  cpu: 1
