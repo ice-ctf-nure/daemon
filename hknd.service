@@ -1,0 +1,29 @@
+[Unit]
+Description=Haaukins (Daemon)
+ConditionPathExists=/home/hknd/daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+
+WorkingDirectory=/home/hknd/daemon
+ExecStart=/home/hknd/daemon/hknd
+
+# removing leftover docker-containers and virtualmachines
+ExecStopPost=/bin/bash /home/hknd/daemon/clean-up.sh
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/hknd
+ExecStartPre=/bin/chown root:adm /var/log/hknd
+ExecStartPre=/bin/chmod 755 /var/log/hknd
+SyslogIdentifier=hknd
+
+[Install]
+WantedBy=multi-user.target
