@@ -1,0 +1,50 @@
+host:
+  http: haaukins.dns-cloud.net
+  grpc: haaukins.dns-cloud.net
+  
+port:
+  insecure: 80
+  secure: 443
+
+tls:
+  enabled:  true
+  certfile: "/home/hknd/certificates/fullchain.pem"
+  certkey: "/home/hknd/certificates/privkey.pem"
+  cafile: "/home/hknd/certificates/chain.pem"
+  
+sign-key: dev-env-key
+prodmode: true
+recaptcha-key: 6Lf28G0mAAAAAGSCAHSfrJvCRM14AQ7iV2mDebs-
+
+db-config:
+  grpc: 127.0.0.1:50051
+  auth-key: development-auth-key
+  sign-key: development-signin-key
+  tls:
+    enabled: true
+    certfile: "/home/hknd/certificates/ex_srv.crt"
+    certkey: "/home/hknd/certificates/ex_srv.key"
+    cafile: "/home/hknd/certificates/root_ca.crt"
+    
+exercise-service:
+  grpc: 127.0.0.1:50095
+  auth-key: development-auth-key-random
+  sign-key: development-signin-key-random
+  tls:
+    enabled: true
+    certfile: "/home/hknd/certificates/ex_srv.crt"
+    certkey: "/home/hknd/certificates/ex_srv.key"
+    cafile: "/home/hknd/certificates/root_ca.crt"
+    
+files:
+  ova-directory: "frontends"
+  
+  
+docker-repositories:
+- username: username
+  password: password 
+  serveraddress: docker.io
+  
+  
+file-transfer-root:
+  path: "/home/hknd/daemon"
